@@ -4,6 +4,20 @@ class User extends CI_Model{
         $this->tableName = 'users';
         $this->primaryKey = 'id';
     }
+    public function getUserAndPosition($userID){
+        $this->db->select(array('id','first_name','last_name', 'current_location','industry', 'email'));
+        $this->db->from($this->tableName);
+        $this->db->where(array('oauth_uid'=>$userID));
+        $userResult = $this->db->get()->row_array();
+
+        $this->db->select('*');
+        $this->db->from('positions');
+        $this->db->where(array('userId'=>$userResult['id']));
+        $positionResult = $this->db->get()->row_array();
+
+
+        return array($userResult, $positionResult);
+    }
     public function checkUser($data = array()){
         $this->db->select($this->primaryKey);
         $this->db->from($this->tableName);
@@ -39,7 +53,7 @@ class User extends CI_Model{
             $update = $this->db->update('positions',$data, array('userId' => $userID));
             $positionID = $prevResult['id'];
         }else{
-            $insert = $this->db->insert('positions',$data);
+        $insert = $this->db->insert('positions',$data);
             $positionID = $this->db->insert_id();
         }
 

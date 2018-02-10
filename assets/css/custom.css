@@ -1,0 +1,23 @@
+.mt-15{
+	margin-top: 15%;
+}
+
+.mt-5{
+    margin-bottom: 5%;
+}
+
+.mt-2{
+    margin-bottom: 2%;
+}
+
+.br10{
+    border-radius: 10px !important;
+}
+
+.col-md-offset-4 {
+    margin-left: 33.33333333%;
+}
+
+.col-md-offset-2 {
+    margin-left: 16.66666667%;
+}

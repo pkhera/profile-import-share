@@ -1,0 +1,1 @@
+<h2>News Item Created</h2>
