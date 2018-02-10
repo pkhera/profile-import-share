@@ -17,6 +17,7 @@ class Profile extends CI_Controller
         if(isset($oauthStatus) && $oauthStatus == 'verified'){
             $userData = $sessUserData;
             $position = $sessPosition;
+            $data['title']="Profile Page";
         }elseif(isset($_REQUEST["oauth_problem"]) && $_REQUEST["oauth_problem"] <> ""){
             $data['error_msg'] = $_GET["oauth_problem"];
         }
